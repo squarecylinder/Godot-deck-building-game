@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cbttaehx45xv"]
+
+[ext_resource type="Texture2D" uid="uid://ck1t4hdip6xrl" path="res://art/tile_0119.png" id="1_emsap"]
+[ext_resource type="Script" path="res://Scripts/Characters/Warrior/Cards/warrior_axe_attack.gd" id="2_uvagt"]
+
+[resource]
+script = ExtResource("2_uvagt")
+id = "warrior_axe_attack"
+type = 0
+target = 1
+cost = 1
+icon = ExtResource("1_emsap")
+tooltip_text = ""

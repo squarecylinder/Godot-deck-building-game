@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn5cs5qd1kdbd"]
+
+[ext_resource type="Theme" uid="uid://b52jbn0odxlcl" path="res://Resources/UI/main_theme.tres" id="1_ip1wd"]
+
+[node name="Tooltip" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 7.0
+offset_right = 60.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme = ExtResource("1_ip1wd")
