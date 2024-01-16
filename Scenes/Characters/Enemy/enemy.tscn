@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d30hh77mlwrn"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/enemy.gd" id="1_1nk4d"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy.gd" id="1_1nk4d"]
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_v3om5"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_pkqd3"]
 [ext_resource type="PackedScene" uid="uid://bcdxmq2e0hyqj" path="res://Scenes/UI/stats_ui.tscn" id="3_5y6wm"]
