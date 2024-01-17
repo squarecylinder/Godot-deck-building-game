@@ -1,6 +1,6 @@
 extends Card
 
-var block = 10
+var block = 8
 
 func apply_effects(targets: Array[Node]) -> void:
 	var block_effect := BlockEffect.new()

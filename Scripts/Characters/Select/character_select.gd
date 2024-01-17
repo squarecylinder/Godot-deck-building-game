@@ -14,9 +14,12 @@ func _ready() -> void:
 func _on_warrior_button_pressed() -> void:
 	var battle_scene = preload("res://Scenes/Battle/battle.tscn").instantiate()
 	battle_scene.char_stats = WARRIOR
-	get_tree().unload_current_scene()
-	get_tree().change_scene_to_packed(battle_scene)
+	add_child(battle_scene)
+	#get_tree().change_scene_to_packed(battle_scene)
 	
 func _on_mage_button_pressed() -> void:
-	pass
+	var battle_scene = preload("res://Scenes/Battle/battle.tscn").instantiate()
+	battle_scene.char_stats = MAGE
+	add_child(battle_scene)
+	#get_tree().change_scene_to_packed(battle_scene)
 	
