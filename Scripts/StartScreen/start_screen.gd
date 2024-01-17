@@ -16,7 +16,8 @@ func open_settings():
 	pass
 
 func _on_start_game_pressed():
-	get_tree().change_scene_to_packed(preload("res://Scenes/Battle/battle.tscn"))
+	#get_tree().change_scene_to_packed(preload("res://Scenes/Battle/battle.tscn"))
+	get_tree().change_scene_to_packed(preload("res://Scenes/Characters/Select/character_select.tscn"))
 
 func _on_load_game_pressed():
 	load_saved_game("SAVE")

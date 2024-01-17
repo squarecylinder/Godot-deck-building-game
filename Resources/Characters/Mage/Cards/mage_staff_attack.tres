@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ct6xbvtvk3fau"]
+
+[ext_resource type="Texture2D" uid="uid://f7tgpjiguspe" path="res://art/tile_0129.png" id="1_jte7q"]
+[ext_resource type="Script" path="res://Scripts/Characters/Mage/Cards/mage_staff_attack.gd" id="2_1gcid"]
+[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="3_8tyac"]
+
+[resource]
+script = ExtResource("2_1gcid")
+id = ""
+type = 0
+target = 1
+cost = 1
+icon = ExtResource("1_jte7q")
+tooltip_text = "[center]Deal [color=\"ff0000\"]10[/color] damage.[/center]"
+sound = ExtResource("3_8tyac")
