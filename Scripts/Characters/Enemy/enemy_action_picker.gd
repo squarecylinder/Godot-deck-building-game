@@ -43,3 +43,26 @@ func get_chance_based_action() -> EnemyAction:
 			return action
 		
 	return null
+
+func setup_chances() -> void:
+	var action: EnemyAction
+	
+	for child in get_children():
+		action = child as EnemyAction
+		if not action or action.type != EnemyAction.Type.CHANCE_BASED:
+			continue
+			
+		total_weight += action.chance_weight
+		action.accumulated_weight = total_weight
+
+func _set_enemy(value: Enemy) -> void:
+	enemy = value
+	
+	for action in get_children():
+		action.enemy = enemy
+		
+func _set_target(value: Node2D) -> void:
+	target = value
+	
+	for action in get_children():
+		action.target = target

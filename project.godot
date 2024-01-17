@@ -15,9 +15,16 @@ run/main_scene="res://Scenes/Battle/battle.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 
+[audio]
+
+buses/default_bus_layout="res://Resources/Audio/default_bus_layout.tres"
+
 [autoload]
 
 Events="*res://Scripts/Global/events.gd"
+Shaker="*res://Scripts/Global/shaker.gd"
+MusicPlayer="*res://Scenes/Global/Audio/music_player.tscn"
+SFXPlayer="*res://Scenes/Global/Audio/sfx_player.tscn"
 
 [display]
 
@@ -26,6 +33,14 @@ window/size/viewport_height=144
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[editor]
+
+script/templates_search_path="res://Scripts/Script_Templates"
+
+[gui]
+
+theme/custom="res://Resources/UI/main_theme.tres"
 
 [input]
 

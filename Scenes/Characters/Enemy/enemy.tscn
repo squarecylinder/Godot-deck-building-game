@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d30hh77mlwrn"]
+[gd_scene load_steps=7 format=3 uid="uid://d30hh77mlwrn"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy.gd" id="1_1nk4d"]
-[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_v3om5"]
+[ext_resource type="Texture2D" uid="uid://2on3ucku1w42" path="res://art/expose.png" id="2_d2cx2"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_pkqd3"]
 [ext_resource type="PackedScene" uid="uid://bcdxmq2e0hyqj" path="res://Scenes/UI/stats_ui.tscn" id="3_5y6wm"]
+[ext_resource type="PackedScene" uid="uid://b6cplg6uqi53f" path="res://Scenes/UI/intent_ui.tscn" id="5_xi2ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btcg2"]
 
@@ -12,7 +13,7 @@ collision_layer = 4
 script = ExtResource("1_1nk4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_v3om5")
+texture = ExtResource("2_d2cx2")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false
@@ -26,6 +27,10 @@ shape = SubResource("RectangleShape2D_btcg2")
 [node name="StatsUI" parent="." instance=ExtResource("3_5y6wm")]
 offset_top = 7.0
 offset_bottom = 23.0
+
+[node name="IntentUI" parent="." instance=ExtResource("5_xi2ox")]
+offset_top = -24.0
+offset_bottom = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

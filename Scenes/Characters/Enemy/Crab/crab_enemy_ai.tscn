@@ -1,0 +1,49 @@
+[gd_scene load_steps=14 format=3 uid="uid://bw4qrgfny6k1i"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy_action_picker.gd" id="1_isan3"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/Crab/crab_attack_action.gd" id="2_2ukdw"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/Crab/crab_block_action.gd" id="3_58ekr"]
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="3_qtus4"]
+[ext_resource type="Script" path="res://Scripts/Resources/intent.gd" id="4_227v2"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/Crab/crab_mega_block_action.gd" id="4_cofuj"]
+[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="5_k7r3c"]
+[ext_resource type="Texture2D" uid="uid://bi6pfjs32f820" path="res://art/tile_0101.png" id="6_f3ss8"]
+[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="6_gxenc"]
+[ext_resource type="AudioStream" uid="uid://k8m4o3hlwm7l" path="res://art/enemy_block.ogg" id="8_u6ufn"]
+
+[sub_resource type="Resource" id="Resource_dcpr0"]
+script = ExtResource("4_227v2")
+number = "7"
+icon = ExtResource("3_qtus4")
+
+[sub_resource type="Resource" id="Resource_etkr3"]
+script = ExtResource("4_227v2")
+number = ""
+icon = ExtResource("6_f3ss8")
+
+[sub_resource type="Resource" id="Resource_opk3m"]
+script = ExtResource("4_227v2")
+number = ""
+icon = ExtResource("6_gxenc")
+
+[node name="CrabEnemyAi" type="Node"]
+script = ExtResource("1_isan3")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_2ukdw")
+intent = SubResource("Resource_dcpr0")
+sound = ExtResource("5_k7r3c")
+type = 1
+chance_weight = 1.0
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_58ekr")
+intent = SubResource("Resource_etkr3")
+sound = ExtResource("8_u6ufn")
+type = 1
+chance_weight = 1.0
+
+[node name="MegaBlockAction" type="Node" parent="."]
+script = ExtResource("4_cofuj")
+intent = SubResource("Resource_opk3m")
+sound = ExtResource("8_u6ufn")
