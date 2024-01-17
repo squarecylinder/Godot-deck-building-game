@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Deck_Builder_Game"
-run/main_scene="res://Scenes/Battle/battle.tscn"
+config/name="Deck Builder Game"
+run/main_scene="res://Scenes/StartScreen/start_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 
