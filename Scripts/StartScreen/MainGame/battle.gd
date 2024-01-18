@@ -9,12 +9,8 @@ extends Node2D
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 
 func _ready() -> void:
-	# Normally, we would do this on a 'Run'
-	# level so we keep our health, gold and deck
-	# between battles.
-	var new_stats: CharacterStats = char_stats.create_instance()
-	battle_ui.char_stats = new_stats
-	player.stats = new_stats
+	battle_ui.char_stats = char_stats
+	player.stats = char_stats
 	
 	enemy_handler.child_order_changed.connect(_on_enemies_child_order_changed)
 	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
@@ -22,7 +18,7 @@ func _ready() -> void:
 	Events.player_turn_ended.connect(player_handler.end_turn)
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
-	start_battle(new_stats)
+	start_battle(char_stats)
 	
 func start_battle(stats: CharacterStats) -> void:
 	get_tree().paused = false
