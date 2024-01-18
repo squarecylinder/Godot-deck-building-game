@@ -16,7 +16,7 @@ func open_settings():
 	pass
 
 func _on_start_game_pressed():
-	get_tree().change_scene_to_packed(preload("res://Scenes/Characters/Select/character_select.tscn"))
+	SceneSwitcher.goto_scene("res://Scenes/StartScreen/MainGame/main_game.tscn")
 
 func _on_load_game_pressed():
 	load_saved_game("SAVE")

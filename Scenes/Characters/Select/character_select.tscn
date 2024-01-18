@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpfqok8tuy4r7" path="res://art/tile_0084.png" id="3_k8dnb"]
 
 [node name="CharacterSelect" type="Node"]
+process_mode = 3
 script = ExtResource("1_l4xy3")
 
 [node name="Label" type="Label" parent="."]

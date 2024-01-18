@@ -8,18 +8,18 @@ const MAGE = preload("res://Resources/Characters/Mage/mage.tres")
 @onready var mage_button: TextureButton = %MageButton
 
 func _ready() -> void:
+	get_tree().paused = false
 	warrior_button.pressed.connect(_on_warrior_button_pressed)
 	mage_button.pressed.connect(_on_mage_button_pressed)
 	
 func _on_warrior_button_pressed() -> void:
-	var battle_scene = preload("res://Scenes/Battle/battle.tscn").instantiate()
-	battle_scene.char_stats = WARRIOR
-	add_child(battle_scene)
-	#get_tree().change_scene_to_packed(battle_scene)
+	var choice_scene = preload("res://Scenes/StartScreen/MainGame/StartingChoices/starting_choices.tscn").instantiate()
+	choice_scene.char_stats = WARRIOR
+	get_parent().add_child(choice_scene)
+	queue_free()
 	
 func _on_mage_button_pressed() -> void:
-	var battle_scene = preload("res://Scenes/Battle/battle.tscn").instantiate()
-	battle_scene.char_stats = MAGE
-	add_child(battle_scene)
-	#get_tree().change_scene_to_packed(battle_scene)
-	
+	var choice_scene = preload("res://Scenes/StartScreen/MainGame/StartingChoices/starting_choices.tscn").instantiate()
+	choice_scene.char_stats = MAGE
+	get_parent().add_child(choice_scene)
+	queue_free()

@@ -25,6 +25,7 @@ Events="*res://Scripts/Global/events.gd"
 Shaker="*res://Scripts/Global/shaker.gd"
 MusicPlayer="*res://Scenes/Global/Audio/music_player.tscn"
 SFXPlayer="*res://Scenes/Global/Audio/sfx_player.tscn"
+SceneSwitcher="*res://Scripts/Global/scene_switcher.gd"
 
 [display]
 
