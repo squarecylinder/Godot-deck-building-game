@@ -5,9 +5,7 @@ func _ready() -> void:
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
 	
 func reset_enemy_actions() -> void:
-	var enemy: Enemy
-	for child in get_children():
-		enemy = child as Enemy
+	for enemy: Enemy in get_children():
 		enemy.current_action = null
 		enemy.update_action()
 		
