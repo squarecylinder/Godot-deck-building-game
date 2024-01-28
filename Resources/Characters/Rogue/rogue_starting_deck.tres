@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=5 format=3 uid="uid://defbfb3dy1s21"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_pile.gd" id="1_18cjn"]
+[ext_resource type="Resource" uid="uid://myrko15y3jtt" path="res://Resources/Characters/Rogue/Cards/rogue_block.tres" id="1_w58ma"]
+[ext_resource type="Resource" uid="uid://cmi71f2c81dey" path="res://Resources/Characters/Rogue/Cards/rogue_dagger_attack.tres" id="2_3yqig"]
+[ext_resource type="Resource" uid="uid://0h8fn1qbpt46" path="res://Resources/Characters/Rogue/Cards/rogue_sword_attack.tres" id="3_nuj4w"]
+
+[resource]
+script = ExtResource("1_18cjn")
+cards = Array[Resource("res://Scripts/Resources/card.gd")]([ExtResource("1_w58ma"), ExtResource("1_w58ma"), ExtResource("2_3yqig"), ExtResource("2_3yqig"), ExtResource("2_3yqig"), ExtResource("2_3yqig"), ExtResource("3_nuj4w"), ExtResource("3_nuj4w"), ExtResource("3_nuj4w"), ExtResource("3_nuj4w")])

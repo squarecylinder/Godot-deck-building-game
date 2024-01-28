@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cmi71f2c81dey"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Rogue/Cards/rogue_dagger_attack.gd" id="1_4nj7n"]
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="1_aaaed"]
+[ext_resource type="AudioStream" uid="uid://dixklg6g4jnsq" path="res://art/slash.ogg" id="3_cgsen"]
+
+[resource]
+script = ExtResource("1_4nj7n")
+id = "rogue_dagger_attack"
+type = 0
+target = 1
+cost = 0
+icon = ExtResource("1_aaaed")
+tooltip_text = "[center]Deal [color=\"ff0000\"]3[/color] damage.[/center]"
+sound = ExtResource("3_cgsen")

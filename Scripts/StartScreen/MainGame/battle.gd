@@ -9,6 +9,7 @@ extends Node2D
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 
 func _ready() -> void:
+	var new_stats: CharacterStats = char_stats.create_instance()
 	battle_ui.char_stats = char_stats
 	player.stats = char_stats
 	
@@ -18,7 +19,7 @@ func _ready() -> void:
 	Events.player_turn_ended.connect(player_handler.end_turn)
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
-	start_battle(char_stats)
+	start_battle(new_stats)
 	
 func start_battle(stats: CharacterStats) -> void:
 	get_tree().paused = false

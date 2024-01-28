@@ -6,8 +6,12 @@
 
 [resource]
 script = ExtResource("1_vo3p1")
+character_name = "Mage"
+description = "Years of wisdom and 
+recurring back pain"
+portrait = ExtResource("1_3evvu")
 starting_deck = ExtResource("3_om1xx")
 cards_per_turn = 4
-max_mana = 3
+max_mana = 4
 max_health = 25
 art = ExtResource("1_3evvu")

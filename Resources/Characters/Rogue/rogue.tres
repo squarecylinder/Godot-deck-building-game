@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://r4yu1jvms420"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/character_stats.gd" id="1_jybls"]
+[ext_resource type="Texture2D" uid="uid://cwf6dyi56tgo" path="res://art/tile_0088.png" id="1_p88sj"]
+[ext_resource type="Resource" uid="uid://defbfb3dy1s21" path="res://Resources/Characters/Rogue/rogue_starting_deck.tres" id="3_dyi65"]
+
+[resource]
+script = ExtResource("1_jybls")
+character_name = "Rogue"
+description = "Sneaky lil' boy"
+portrait = ExtResource("1_p88sj")
+starting_deck = ExtResource("3_dyi65")
+cards_per_turn = 5
+max_mana = 3
+max_health = 27
+art = ExtResource("1_p88sj")

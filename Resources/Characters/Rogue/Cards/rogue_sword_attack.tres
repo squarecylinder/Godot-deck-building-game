@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://0h8fn1qbpt46"]
+
+[ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="1_bddfo"]
+[ext_resource type="Script" path="res://Scripts/Characters/Rogue/Cards/rogue_sword_attack.gd" id="2_4d66e"]
+[ext_resource type="AudioStream" uid="uid://bofaerdnasrjx" path="res://art/true_strength.ogg" id="3_o8k6w"]
+
+[resource]
+script = ExtResource("2_4d66e")
+id = "rogue_sword_attack"
+type = 0
+target = 2
+cost = 2
+icon = ExtResource("1_bddfo")
+tooltip_text = "[center]Deal [color=\"ff0000\"]8[/color] damage.[/center]"
+sound = ExtResource("3_o8k6w")
