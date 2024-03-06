@@ -18,6 +18,9 @@ const TREASURE_SCENE = preload("res://Scenes/StartScreen/MainGame/Treasure/treas
 @onready var rewards_button: Button = %RewardsButton
 @onready var campfire_button: Button = %CampfireButton
 
+@onready var deck_button: CardPileOpener = %DeckButton
+@onready var deck_view: CardPileView = %DeckView
+
 var character: CharacterStats
 
 func _ready() -> void:
@@ -27,13 +30,13 @@ func _ready() -> void:
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
 			character = run_startup.picked_character.create_instance()
-			print(character.character_name)
 			_start_run()
 		RunStartup.Type.CONTINUED_RUN:
 			print("TODO: Load previous run")
 		
 func _start_run() -> void:
 	_setup_event_connections()
+	_setup_top_bar()
 	print("TODO: procedurally generate map")
 	
 func _change_view(scene: PackedScene) ->void:
@@ -58,6 +61,11 @@ func _setup_event_connections() -> void:
 	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARDS_SCENE))
 	treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
 	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
+	
+func _setup_top_bar() -> void:
+	deck_button.card_pile = character.deck
+	deck_view.card_pile = character.deck
+	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
 	
 func _on_map_exited() -> void:
 	print("TODO: From the Map, change view based on room type")

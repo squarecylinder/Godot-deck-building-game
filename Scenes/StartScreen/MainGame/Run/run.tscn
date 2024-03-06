@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdtw6uxwacbvb"]
+[gd_scene load_steps=7 format=3 uid="uid://bdtw6uxwacbvb"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen/MainGame/Run/run.gd" id="1_boyvr"]
 [ext_resource type="PackedScene" uid="uid://dh6s4r5ucbm51" path="res://Scenes/StartScreen/MainGame/Map/map.tscn" id="1_kwlnb"]
 [ext_resource type="Resource" uid="uid://pfbjgs8qrmrx" path="res://Resources/Run/run_startup.tres" id="2_2s5x6"]
+[ext_resource type="PackedScene" uid="uid://bv6loy24fpx7i" path="res://Scenes/UI/card_pile_opener.tscn" id="4_a4u77"]
+[ext_resource type="Texture2D" uid="uid://ss5c04pnvfbq" path="res://art/deck.png" id="5_ff5js"]
+[ext_resource type="PackedScene" uid="uid://fvkpemkswrvp" path="res://Scenes/UI/card_pile_view.tscn" id="6_pll5v"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_boyvr")
@@ -16,6 +19,7 @@ run_startup = ExtResource("2_2s5x6")
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+alignment = 1
 
 [node name="MapButton" type="Button" parent="DebugButtons"]
 unique_name_in_owner = true
@@ -49,3 +53,43 @@ text = "Rewards"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Campfire"
+
+[node name="TopBar" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Background" type="ColorRect" parent="TopBar"]
+custom_minimum_size = Vector2(0, 18)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.529412)
+
+[node name="BarItems" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(0, 18)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Placeholder" type="Control" parent="TopBar/BarItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeckButton" parent="TopBar/BarItems" node_paths=PackedStringArray("counter") instance=ExtResource("4_a4u77")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture_normal = ExtResource("5_ff5js")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="TopBar/BarItems/DeckButton"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 13.0
+offset_right = 6.0
+offset_bottom = 19.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="DeckView" parent="TopBar" instance=ExtResource("6_pll5v")]
+unique_name_in_owner = true
+visible = false
