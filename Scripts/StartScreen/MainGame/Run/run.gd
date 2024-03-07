@@ -43,11 +43,8 @@ func _start_run() -> void:
 	_setup_top_bar()
 	print("TODO: procedurally generate map")
 	
-	await get_tree().create_timer(3).timeout
-	stats.gold += 55
 	
-	
-func _change_view(scene: PackedScene) ->void:
+func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 		
@@ -55,8 +52,10 @@ func _change_view(scene: PackedScene) ->void:
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
 	
+	return new_view
+	
 func _setup_event_connections() -> void:
-	Events.battle_won.connect(_change_view.bind(BATTLE_REWARDS_SCENE))
+	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.campfire_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.map_exited.connect(_on_map_exited)
@@ -79,3 +78,12 @@ func _setup_top_bar() -> void:
 func _on_map_exited() -> void:
 	print("TODO: From the Map, change view based on room type")
 	pass
+	
+func _on_battle_won() -> void:
+	var reward_scene := _change_view(BATTLE_REWARDS_SCENE) as BattleReward
+	reward_scene.run_stats = stats
+	reward_scene.character_stats = character
+	
+	#TODO: Testing code remove when done
+	reward_scene.add_gold_reward(60)
+	reward_scene.add_card_reward()
