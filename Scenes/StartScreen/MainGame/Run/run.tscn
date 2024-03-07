@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdtw6uxwacbvb"]
+[gd_scene load_steps=8 format=3 uid="uid://bdtw6uxwacbvb"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen/MainGame/Run/run.gd" id="1_boyvr"]
 [ext_resource type="PackedScene" uid="uid://dh6s4r5ucbm51" path="res://Scenes/StartScreen/MainGame/Map/map.tscn" id="1_kwlnb"]
 [ext_resource type="Resource" uid="uid://pfbjgs8qrmrx" path="res://Resources/Run/run_startup.tres" id="2_2s5x6"]
 [ext_resource type="PackedScene" uid="uid://bv6loy24fpx7i" path="res://Scenes/UI/card_pile_opener.tscn" id="4_a4u77"]
+[ext_resource type="PackedScene" uid="uid://bj0f4f60xh4in" path="res://Scenes/UI/gold_ui.tscn" id="4_y3js6"]
 [ext_resource type="Texture2D" uid="uid://ss5c04pnvfbq" path="res://art/deck.png" id="5_ff5js"]
 [ext_resource type="PackedScene" uid="uid://fvkpemkswrvp" path="res://Scenes/UI/card_pile_view.tscn" id="6_pll5v"]
 
@@ -69,6 +70,10 @@ custom_minimum_size = Vector2(0, 18)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+
+[node name="GoldUI" parent="TopBar/BarItems" instance=ExtResource("4_y3js6")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Placeholder" type="Control" parent="TopBar/BarItems"]
 layout_mode = 2

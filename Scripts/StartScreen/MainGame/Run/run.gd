@@ -18,9 +18,11 @@ const TREASURE_SCENE = preload("res://Scenes/StartScreen/MainGame/Treasure/treas
 @onready var rewards_button: Button = %RewardsButton
 @onready var campfire_button: Button = %CampfireButton
 
+@onready var gold_ui: GoldUI = %GoldUI
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
 
+var stats: RunStats
 var character: CharacterStats
 
 func _ready() -> void:
@@ -35,9 +37,15 @@ func _ready() -> void:
 			print("TODO: Load previous run")
 		
 func _start_run() -> void:
+	stats = RunStats.new()
+	
 	_setup_event_connections()
 	_setup_top_bar()
 	print("TODO: procedurally generate map")
+	
+	await get_tree().create_timer(3).timeout
+	stats.gold += 55
+	
 	
 func _change_view(scene: PackedScene) ->void:
 	if current_view.get_child_count() > 0:
@@ -63,6 +71,7 @@ func _setup_event_connections() -> void:
 	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
 	
 func _setup_top_bar() -> void:
+	gold_ui.run_stats = stats
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))

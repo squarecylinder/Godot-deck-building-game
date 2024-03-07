@@ -8,17 +8,15 @@ const HOVER_STYLE_BOX := preload("res://Resources/UI/card_hover_style_box.tres")
 
 @export var card: Card : set = set_card
 
-@onready var panel: Panel = $Visuals/Panel
-@onready var cost: Label = $Visuals/Cost
-@onready var icon: TextureRect = $Visuals/Icon
+@onready var visuals: CardVisuals = $Visuals
 
 
 func _on_visuals_mouse_entered() -> void:
-	panel.set("theme_override_styles/panel", HOVER_STYLE_BOX)
+	visuals.panel.set("theme_override_styles/panel", HOVER_STYLE_BOX)
 
 
 func _on_visuals_mouse_exited() -> void:
-	panel.set("theme_override_styles/panel", BASE_STYLE_BOX)
+	visuals.panel.set("theme_override_styles/panel", BASE_STYLE_BOX)
 
 
 func _on_visuals_gui_input(event: InputEvent) -> void:
@@ -30,5 +28,4 @@ func set_card(value: Card) -> void:
 		await ready
 		
 	card = value
-	cost.text = str(card.cost)
-	icon.texture = card.icon
+	visuals.card = card
