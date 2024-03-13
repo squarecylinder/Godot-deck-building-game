@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_6jxyi")
 id = "rogue_block"
+rarity = 0
 type = 1
 target = 0
 cost = 1

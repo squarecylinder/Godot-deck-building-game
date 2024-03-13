@@ -11,6 +11,8 @@ const MONSTER_ROOM_WEIGHT := 10.0
 const SHOP_ROOM_WEIGHT := 2.5
 const CAMPFIRE_ROOM_WEIGHT := 4.0
 
+@export var battle_stats_pool: BattleStatsPool
+
 var random_room_type_weights = {
 	Room.Type.MONSTER: 0.0,
 	Room.Type.CAMPFIRE: 0.0,
@@ -26,9 +28,11 @@ func generate_map() -> Array[Array]:
 	
 	for column in starting_points:
 		var current_column = column
-		for floor in FLOORS - 1:
-			current_column = _setup_connection(floor, current_column)
+		for floor_number in FLOORS - 1:
+			current_column = _setup_connection(floor_number, current_column)
 			
+	battle_stats_pool.setup()
+	
 	_setup_boss_room()
 	_setup_room_weights()
 	_setup_room_types()
@@ -38,20 +42,20 @@ func generate_map() -> Array[Array]:
 func _generate_initial_grid() -> Array[Array]:
 	var result: Array[Array] = []
 	
-	for floor in FLOORS:
+	for floor_number in FLOORS:
 		var adjacent_rooms: Array[Room] = []
 		
 		for column in MAP_WIDTH:
 			var current_room := Room.new()
 			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
-			current_room.position = Vector2(column * X_DIST, floor * -Y_DIST) + offset
-			current_room.row = floor
+			current_room.position = Vector2(column * X_DIST, floor_number * -Y_DIST) + offset
+			current_room.row = floor_number
 			current_room.column = column
 			current_room.next_rooms = []
 			
 		# Boss Room has a non-random Y
-			if floor == FLOORS - 1:
-				current_room.position.y = (floor + 1) * -Y_DIST
+			if floor_number == FLOORS - 1:
+				current_room.position.y = (floor_number + 1) * -Y_DIST
 				
 			adjacent_rooms.append(current_room)
 		
@@ -76,29 +80,29 @@ func _get_random_starting_points() -> Array[int]:
 	
 	return y_coordinates
 
-func _setup_connection(floor: int, column: int) -> int:
+func _setup_connection(floor_number: int, column: int) -> int:
 	var next_room: Room
-	var current_room := map_data[floor][column] as Room
+	var current_room := map_data[floor_number][column] as Room
 	
-	while not next_room or _would_cross_existing_path(floor, column, next_room):
+	while not next_room or _would_cross_existing_path(floor_number, column, next_room):
 		var random_column := clampi(randi_range(column - 1, column + 1), 0, MAP_WIDTH - 1)
-		next_room = map_data[floor + 1][random_column]
+		next_room = map_data[floor_number + 1][random_column]
 		
 	current_room.next_rooms.append(next_room)
 	
 	return next_room.column
 	
-func _would_cross_existing_path(floor: int, column: int, room: Room) -> bool:
+func _would_cross_existing_path(floor_number: int, column: int, room: Room) -> bool:
 	var left_neighbor: Room
 	var right_neighbor: Room
 	
 	# If column == 0 there is no left neighbor
 	if column > 0:
-		left_neighbor = map_data[floor][column - 1]
+		left_neighbor = map_data[floor_number][column - 1]
 	
 	# If column == MAP_WIDTH - 1 there is no right neighbor
 	if column < MAP_WIDTH - 1:
-		right_neighbor = map_data[floor][column + 1]
+		right_neighbor = map_data[floor_number][column + 1]
 		
 	# Can't cross in right direction if right neighbor goes to the left
 	if right_neighbor and room.column > column:
@@ -125,6 +129,7 @@ func _setup_boss_room() -> void:
 			current_room.next_rooms.append(boss_room)
 			
 		boss_room.type = Room.Type.BOSS
+		boss_room.battle_stats = battle_stats_pool.get_random_battle_for_tier(2)
 	
 func _setup_room_weights() -> void:
 	random_room_type_weights[Room.Type.MONSTER] = MONSTER_ROOM_WEIGHT
@@ -138,6 +143,7 @@ func _setup_room_types() -> void:
 	for room: Room in map_data[0]:
 		if room.next_rooms.size() > 0:
 			room.type = Room.Type.MONSTER
+			room.battle_stats = battle_stats_pool.get_random_battle_for_tier(0)
 			
 	# 9th floor is always a treasure
 	for room: Room in map_data[8]:
@@ -177,6 +183,14 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		campfire_on_13 = is_campfire and room_to_set.row == 12
 		
 	room_to_set.type = type_candidate
+	
+	if type_candidate == Room.Type.MONSTER:
+		var tier_for_monster_rooms := 0
+		
+		if room_to_set.row > 2:
+			tier_for_monster_rooms = 1
+			
+		room_to_set.battle_stats = battle_stats_pool.get_random_battle_for_tier(tier_for_monster_rooms)
 		
 func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
 	var parents: Array[Room] = []
