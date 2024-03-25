@@ -1,0 +1,199 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0vlwjn5noka1"]
+
+[ext_resource type="Script" path="res://Scripts/MainGame/Campfire/campfire.gd" id="1_xgw2i"]
+[ext_resource type="Texture2D" uid="uid://e6utppbeeuul" path="res://art/line.png" id="2_gr1vw"]
+[ext_resource type="Resource" uid="uid://cmu6ix733p6ko" path="res://Resources/Characters/Warrior/warrior.tres" id="2_q2hcn"]
+
+[sub_resource type="Gradient" id="Gradient_wu7pm"]
+offsets = PackedFloat32Array(0.126761, 0.932394)
+colors = PackedColorArray(0, 0, 0, 1, 0.258824, 0.145098, 0.133333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rw4vg"]
+gradient = SubResource("Gradient_wu7pm")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="Gradient" id="Gradient_4uyqc"]
+offsets = PackedFloat32Array(0, 0.164087, 0.455108, 0.743034, 0.916409, 0.98452)
+colors = PackedColorArray(1, 0.784314, 0.372549, 1, 0.913725, 0.25098, 0.305882, 1, 0.635294, 0.239216, 0.227451, 1, 0.635294, 0.239216, 0.227451, 1, 0.270588, 0.156863, 0.196078, 1, 0.270588, 0.156863, 0.196078, 0.360784)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fg5nj"]
+gradient = SubResource("Gradient_4uyqc")
+
+[sub_resource type="Curve" id="Curve_1j62g"]
+_data = [Vector2(0, 0.305896), 0.0, 0.0, 0, 0, Vector2(0.0826211, 1), 0.0, 0.0, 0, 0, Vector2(0.820513, 0.99277), 0.0, 0.0, 0, 0, Vector2(1, 0.320356), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jue13"]
+curve = SubResource("Curve_1j62g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j8p30"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 25.0
+angle_min = 60.0
+angle_max = 120.0
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 15.0
+linear_accel_max = 25.0
+damping_min = 20.0
+damping_max = 50.0
+scale_curve = SubResource("CurveTexture_jue13")
+color_ramp = SubResource("GradientTexture1D_fg5nj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtih3"]
+font_size = 12
+
+[sub_resource type="Animation" id="Animation_mk0wc"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticlesLayers/GPUParticles2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UILayer/UI:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_fade_out_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4i1jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticlesLayers/GPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UILayer/UI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m23ic"]
+_data = {
+"RESET": SubResource("Animation_4i1jc"),
+"fade_out": SubResource("Animation_mk0wc")
+}
+
+[node name="Campfire" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_xgw2i")
+char_stats = ExtResource("2_q2hcn")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rw4vg")
+
+[node name="ParticlesLayers" type="CanvasLayer" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticlesLayers"]
+position = Vector2(106, 99)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_j8p30")
+texture = ExtResource("2_gr1vw")
+lifetime = 1.5
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="VBoxContainer" parent="UILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -22.0
+offset_right = 89.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UILayer/UI"]
+layout_mode = 2
+text = "Campfire"
+label_settings = SubResource("LabelSettings_vtih3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="UILayer/UI"]
+layout_mode = 2
+
+[node name="RestButton" type="Button" parent="UILayer/UI"]
+custom_minimum_size = Vector2(40, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Rest"
+
+[node name="Description" type="Label" parent="UILayer/UI"]
+layout_mode = 2
+text = "+30% HP"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m23ic")
+}
+
+[connection signal="pressed" from="UILayer/UI/RestButton" to="." method="_on_rest_button_pressed"]
