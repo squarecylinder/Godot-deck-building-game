@@ -16,9 +16,31 @@ var floors_climbed: int
 var last_room: Room
 var camera_edge_y: float
 
+var length := 25
+var startPos: Vector2
+var curPos: Vector2
+var swiping := false
+var threshold := 10
+
+
 func _ready() -> void:
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
 
+	
+#func _process(delta) -> void:
+	#if Input.is_action_just_pressed("left_mouse"):
+		#if !swiping:
+			#swiping = true
+			#startPos = get_global_mouse_position()
+	#if Input.is_action_pressed("left_mouse"):
+		#if swiping:
+			#curPos = get_global_mouse_position()
+			#if startPos.distance_to(curPos) >= length:
+				#if abs(startPos.x - curPos.x) <= threshold:
+					#camera_2d.position.y -= curPos.y
+					#swiping = false
+	#else:
+		#swiping = false
 	
 func _input(event: InputEvent) -> void:
 	if not visible:
@@ -28,6 +50,20 @@ func _input(event: InputEvent) -> void:
 		camera_2d.position.y -= SCROLL_SPEED
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
+		
+	if Input.is_action_just_pressed("left_mouse"):
+		if !swiping:
+			swiping = true
+			startPos = get_local_mouse_position()
+	if Input.is_action_pressed("left_mouse"):
+		if swiping:
+			curPos = get_local_mouse_position()
+			if startPos.distance_to(curPos) >= length:
+				if abs(startPos.x - curPos.x) <= threshold:
+					camera_2d.position.y -= curPos.y
+					swiping = false
+	else:
+		swiping = false
 		
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 	

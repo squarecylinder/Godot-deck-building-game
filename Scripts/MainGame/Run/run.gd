@@ -19,6 +19,8 @@ const TREASURE_SCENE = preload("res://Scenes/MainGame/Treasure/treasure.tscn")
 @onready var rewards_button: Button = %RewardsButton
 @onready var campfire_button: Button = %CampfireButton
 
+@onready var debug_buttons = $DebugButtons
+
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
@@ -45,6 +47,10 @@ func _start_run() -> void:
 	map.generate_new_map()
 	map.unlock_floor(0)
 	
+func _input(event) -> void:
+	if event.is_action_pressed("debug"):
+		print("debug button hit")
+		debug_buttons.visible = !debug_buttons.visible
 	
 func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
