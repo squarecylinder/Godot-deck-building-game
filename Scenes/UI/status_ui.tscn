@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ajtt7554806"]
+[gd_scene load_steps=4 format=3 uid="uid://5ajtt7554806"]
 
 [ext_resource type="Script" path="res://Scenes/UI/status_ui.gd" id="1_bup45"]
 [ext_resource type="Texture2D" uid="uid://d0edy7thj8ce6" path="res://art/heart.png" id="1_okxyo"]
+[ext_resource type="Resource" uid="uid://dw8rkek3b64wd" path="res://Resources/Statuses/true_strength_form.tres" id="2_bljk8"]
 
 [node name="StatusUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_bup45")
+status = ExtResource("2_bljk8")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0

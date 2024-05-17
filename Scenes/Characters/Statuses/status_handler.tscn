@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bewgw4cofi7o3"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Statuses/status_handler.gd" id="1_5inju"]
+
+[node name="StatusHandler" type="GridContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+script = ExtResource("1_5inju")

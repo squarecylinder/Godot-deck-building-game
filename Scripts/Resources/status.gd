@@ -1,5 +1,5 @@
 class_name Status
-extends Node
+extends Resource
 
 signal status_applied(status: Status)
 signal status_changed

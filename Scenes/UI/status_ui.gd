@@ -36,3 +36,6 @@ func _on_status_changed() -> void:
 	
 	if status.stack_type == Status.StackType.INTENSITY and status.stacks == 0:
 		queue_free()
+		
+	duration.text = str(status.duration)
+	stacks.text = str(status.stacks)
