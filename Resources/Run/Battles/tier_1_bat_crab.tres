@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://cisb80xjwthwr"]
 
 [ext_resource type="PackedScene" uid="uid://cpsutqfivcm4r" path="res://Scenes/MainGame/Run/Battles/tier_1_bat_crab.tscn" id="1_ad21y"]
-[ext_resource type="Script" path="res://Scripts/Resources/battle_stats.gd" id="1_voqph"]
+[ext_resource type="Script" path="res://Scripts/Resources/Stats/battle_stats.gd" id="1_voqph"]
 
 [resource]
 script = ExtResource("1_voqph")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://con6y7mc74c5a" path="res://art/tile_0120.png" id="1_5oloj"]
 [ext_resource type="PackedScene" uid="uid://bly2eslm6j3pf" path="res://Scenes/Characters/Enemy/Bat/bat_enemy_ai.tscn" id="1_331im"]
-[ext_resource type="Script" path="res://Scripts/Resources/enemy_stats.gd" id="1_oreac"]
+[ext_resource type="Script" path="res://Scripts/Resources/Stats/enemy_stats.gd" id="1_oreac"]
 
 [resource]
 script = ExtResource("1_oreac")

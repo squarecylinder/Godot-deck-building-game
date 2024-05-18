@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d30hh77mlwrn"]
+[gd_scene load_steps=8 format=3 uid="uid://d30hh77mlwrn"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy.gd" id="1_1nk4d"]
 [ext_resource type="Texture2D" uid="uid://2on3ucku1w42" path="res://art/expose.png" id="2_d2cx2"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_pkqd3"]
 [ext_resource type="PackedScene" uid="uid://bcdxmq2e0hyqj" path="res://Scenes/UI/stats_ui.tscn" id="3_5y6wm"]
 [ext_resource type="PackedScene" uid="uid://b6cplg6uqi53f" path="res://Scenes/UI/intent_ui.tscn" id="5_xi2ox"]
+[ext_resource type="PackedScene" uid="uid://bewgw4cofi7o3" path="res://Scenes/Characters/Statuses/status_handler.tscn" id="6_xdgrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btcg2"]
 
@@ -31,6 +32,13 @@ offset_bottom = 23.0
 [node name="IntentUI" parent="." instance=ExtResource("5_xi2ox")]
 offset_top = -24.0
 offset_bottom = -10.0
+
+[node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("6_xdgrn")]
+offset_left = -27.0
+offset_top = 19.0
+offset_right = -27.0
+offset_bottom = 19.0
+status_owner = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

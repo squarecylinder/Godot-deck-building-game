@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://dhtsct5tflh2t"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/enemy_stats.gd" id="1_avvlo"]
+[ext_resource type="Script" path="res://Scripts/Resources/Stats/enemy_stats.gd" id="1_avvlo"]
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_j61uv"]
 [ext_resource type="PackedScene" uid="uid://bw4qrgfny6k1i" path="res://Scenes/Characters/Enemy/Crab/crab_enemy_ai.tscn" id="1_xqhpe"]
 
