@@ -15,4 +15,9 @@ texture = ExtResource("2_1k6au")
 offset_top = 7.0
 offset_bottom = 23.0
 
-[node name="StatusHandler" parent="." instance=ExtResource("4_ns54s")]
+[node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("4_ns54s")]
+offset_left = -25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 25.0
+status_owner = NodePath("..")

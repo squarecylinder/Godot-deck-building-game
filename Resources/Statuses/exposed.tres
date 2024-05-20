@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ExposedStatus" load_steps=3 format=3 uid="uid://2y2kmqjb2rt8"]
 
 [ext_resource type="Texture2D" uid="uid://2on3ucku1w42" path="res://art/expose.png" id="1_gudif"]
-[ext_resource type="Script" path="res://Scripts/Characters/Statuses/exposed.gd" id="2_daftl"]
+[ext_resource type="Script" path="res://Scripts/Resources/Statuses/exposed.gd" id="2_daftl"]
 
 [resource]
 script = ExtResource("2_daftl")
