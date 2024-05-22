@@ -3,12 +3,12 @@ extends Card
 const EXPOSED_STATUS = preload("res://Resources/Statuses/exposed.tres")
 
 # Just update int to an integer damage amount
-var damage := 10
+var base_damage := 10
 var exposed_duration := 2
 
-func apply_effects(targets: Array[Node]) -> void:
+func apply_effects(targets: Array[Node], modifiers: ModifierHandler) -> void:
 	var damage_effect := DamageEffect.new()
-	damage_effect.amount = damage
+	damage_effect.amount = modifiers.get_modified_value(base_damage, Modifier.Type.DMG_DEALT)
 	damage_effect.sound = sound
 	damage_effect.execute(targets)
 	

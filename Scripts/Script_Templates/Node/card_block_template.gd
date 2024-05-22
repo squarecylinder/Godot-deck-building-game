@@ -3,10 +3,10 @@
 extends Card
 
 # Just update int to an integer block amount
-var block: int
+var base_block: int
 
-func apply_effects(targets: Array[Node]) -> void:
+func apply_effects(targets: Array[Node], _modifiers: ModifierHandler) -> void:
 	var block_effect := BlockEffect.new()
-	block_effect.amount = block
+	block_effect.amount = base_block
 	block_effect.sound = sound
 	block_effect.execute(targets)

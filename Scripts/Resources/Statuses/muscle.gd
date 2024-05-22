@@ -8,7 +8,7 @@ func initialize_status(target: Node) -> void:
 func _on_status_changed(target: Node) -> void:
 	assert(target.get("modifier_handler"), "No modifiers on %s" % target)
 	
-	var dmg_dealt_modifier : Modifier = target.modifier_andler.get_modifier(Modifier.Type.DMG_DEALT)
+	var dmg_dealt_modifier : Modifier = target.modifier_handler.get_modifier(Modifier.Type.DMG_DEALT)
 	assert(dmg_dealt_modifier, " No dmg dealt modifier on %s" % target)
 	
 	var muscle_modifier_value := dmg_dealt_modifier.get_value("muscle")
