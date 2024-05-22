@@ -1,7 +1,7 @@
 class_name Modifier
 extends Node
 
-enum Type {DMG_DEALT, DMG_TAKEN, CARD_COST, SHOP_COST, NO_MODIFIER}
+enum Type {DMG_DEALT, DMG_TAKEN, BLOCK_GAINED, CARD_COST, SHOP_COST, NO_MODIFIER}
 
 @export var type: Type
 
@@ -38,6 +38,6 @@ func get_modified_value(base: int) -> int:
 			
 	for value: ModifierValue in get_children():
 		if value.type == ModifierValue.Type.PERCENT_BASED:
-			percent_result += value.PERCENT_BASED
+			percent_result += value.percent_value
 			
 	return floori(flat_result * percent_result)

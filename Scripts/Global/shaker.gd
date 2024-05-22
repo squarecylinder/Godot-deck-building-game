@@ -18,5 +18,8 @@ func shake(thing: Node2D, strength: float, duration: float = 2.0) -> void:
 	
 	tween.finished.connect(
 		func():
-			thing.position = orig_pos
+			if thing:
+				thing.position = orig_pos
+			else:
+				return
 	)
